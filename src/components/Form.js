@@ -58,16 +58,11 @@ const Form = (props) => {
             <hr />
 
             {todos.map((todo, i) => {
-                const todoClasses = [];
-
-                if (todo.complete) {
-                    todoClasses.push("Line-through");
-                }
-
+                
                 return (
                     <div key={i}>
                         <input onChange={(e) => {todoToggle(i)}} checked={todo.complete} type="checkbox" />
-                        <span className={todoClasses.join(" ")} >{todo.text}</span>
+                        <span style={{ textDecoration: todo.complete && 'line-through' }} >{todo.text}</span>
                         <button style={{marginLeft: "15px"}} onClick={(e) => {handleTodoDelete(i)}} >Delete</button>
                     </div>
                 );
